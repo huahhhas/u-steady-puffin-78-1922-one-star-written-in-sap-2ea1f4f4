@@ -17,11 +17,15 @@ LINE = (
 
 
 def main() -> None:
-    print(LINE)
+    if len(LINE) >= 280:
+        raise ValueError("review line must stay under 280 characters")
+    text = LINE + "\n"
+    import sys
+    sys.stdout.write(text)
     import os
     os.makedirs("/output", exist_ok=True)
     with open("/output/entry.txt", "w", encoding="utf-8") as f:
-        f.write(LINE + "\n")
+        f.write(text)
 
 
 if __name__ == "__main__":
